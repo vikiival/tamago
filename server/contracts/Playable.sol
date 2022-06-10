@@ -27,10 +27,4 @@ contract Playable {
         uint lastWatered = _lastWatered[_tokenId];
         return DateTimeUtils.isNextDay(lastWatered, block.timestamp);
     }
-
-    function isNextDay() public view returns (bool) {
-        uint minTimestamp = BokkyPooBahsDateTimeLibrary.minDate(block.timestamp);
-        console.log("Timestamp '%s' min is '%s'", block.timestamp, minTimestamp);
-        return BokkyPooBahsDateTimeLibrary.diffDays(minTimestamp, BokkyPooBahsDateTimeLibrary.addDays(minTimestamp, 1)) == 1;
-    }
 }
