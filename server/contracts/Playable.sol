@@ -23,7 +23,7 @@ contract Playable {
         _lastWatered[_tokenId] = DateTimeUtils.minDate(block.timestamp);
     }
 
-    function isDayAfterWatering(uint256 _tokenId) public pure returns (bool) {
+    function isDayAfterWatering(uint256 _tokenId) public view returns (bool) {
         uint lastWatered = _lastWatered[_tokenId];
         return DateTimeUtils.isNextDay(lastWatered, block.timestamp);
     }
