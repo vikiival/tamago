@@ -6,7 +6,7 @@ import {
   useWaitForTransaction,
 } from 'wagmi';
 
-const MintButton: FC<any> = () => {
+const MintButton: FC<any> = ({ id }) => {
   // const [totalMinted, setTotalMinted] = useState(0);
   // const { isConnected } = useConnect();
 
@@ -16,7 +16,7 @@ const MintButton: FC<any> = () => {
   //   isLoading: isMintLoading,
   //   isSuccess: isMintStarted,
   //   error: mintError,
-  // } = useContractWrite(contractConfig, 'mint');
+  // } = useContractWrite(contractConfig, 'mint', { args: [id] });
 
   // const { data: totalSupplyData } = useContractRead(
   //   contractConfig,
@@ -29,7 +29,7 @@ const MintButton: FC<any> = () => {
   // });
 
   const handleClick = () => {
-    console.log('Mining ready now just call mint()');
+    console.log('Water ready now just call mint()');
     
   }
 
