@@ -1,8 +1,8 @@
-import { FC } from 'react'
+import type { NextPage } from 'next'
 import CenteredCard from '@/components/Card/CenteredCard'
 import Tree from '@/Tree/Tree'
 
-const Water: FC = () => {
+const Water: NextPage = () => {
 	return (
 		<CenteredCard>
 			<Tree/>
