@@ -1,17 +1,17 @@
-import { FC } from 'react'
 import CenteredCard from '@/components/Card/CenteredCard'
 import MintButton from '@/components/Button/MintButton'
 import type { NextPage } from 'next'
+import Image from 'next/image'
+
 
 const Plant: NextPage = () => {
 	return (
 		<CenteredCard>
-      <div className="grid gap-4 grid-cols-1 grid-rows-3">
-      <h5 className="font-medium leading-tight text-xl mt-0 mb-2 text-blue-600">Plant</h5>
-      <div></div>
-      <MintButton />
-</div>
-      
+			<div className="flex flex-col">
+				{/* <h5 className="font-medium leading-tight text-xl p-1 text-blue-600">Plant</h5> */}
+				<Image src="/images/tree.png" alt="me" width="512" height="512" />
+				<MintButton />
+			</div>
 		</CenteredCard>
 	)
 }

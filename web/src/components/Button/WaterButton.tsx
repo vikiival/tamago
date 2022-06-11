@@ -6,9 +6,9 @@ import {
   useWaitForTransaction,
 } from 'wagmi';
 
-const MintButton: FC<any> = ({ id }) => {
+const WaterButton: FC<any> = ({ id }) => {
   // const [totalMinted, setTotalMinted] = useState(0);
-  // const { isConnected } = useConnect();
+  const { isConnected } = useConnect();
 
   // const {
   //   data: mintData,
@@ -29,15 +29,14 @@ const MintButton: FC<any> = ({ id }) => {
   // });
 
   const handleClick = () => {
-    console.log('Water ready now just call mint()');
-    
+    console.log('Water ready now just call mint()'); 
   }
 
   return (
-   <button onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
-      Mint
+    <button disabled={!isConnected} onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full">
+      Water
     </button>
   )
 }
 
-export default MintButton;
+export default WaterButton;
