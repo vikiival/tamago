@@ -9,15 +9,16 @@ import p5Types from 'p5' //Import this for typechecking and intellisense
 import { TreeStatus } from '@/types'
 
 const Tree: FC<TreeStatus> = ({ level }) => {
+	console.log('called tree')
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
-		p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef)
+		p5.createCanvas(p5.windowWidth / 2, p5.windowHeight / 2).parent(canvasParentRef)
 		p5.angleMode(p5.DEGREES)
 		p5.noLoop()
 	}
 
 	const draw = (p5: p5Types) => {
 		p5.background(100)
-		p5.translate(p5.width / 2, p5.height / 2 + 300)
+		p5.translate(p5.width / 4, p5.height / 4 + 300)
 		const branch = len => {
 			p5.push()
 			if (len > 10) {
