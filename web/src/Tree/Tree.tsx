@@ -6,9 +6,9 @@ const Sketch = dynamic(() => import('react-p5').then(mod => mod.default), {
 	ssr: false,
 })
 import p5Types from 'p5' //Import this for typechecking and intellisense
-import p5 from 'p5'
+import { TreeStatus } from '@/types'
 
-const Tree: FC<any> = () => {
+const Tree: FC<TreeStatus> = ({ level }) => {
 	const setup = (p5: p5Types, canvasParentRef: Element) => {
 		p5.createCanvas(p5.windowWidth, p5.windowHeight).parent(canvasParentRef)
 		p5.angleMode(p5.DEGREES)
@@ -53,7 +53,7 @@ const Tree: FC<any> = () => {
 			}
 			p5.pop()
 		}
-		branch(100)
+		branch(20 * level) // TODO: @Frank pls change
 	}
 	//-----------------------///
 	//----PlaygroundFrank----///
