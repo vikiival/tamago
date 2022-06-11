@@ -2,26 +2,28 @@
 pragma solidity ^0.8.0;
 
 import "hardhat/console.sol";
-import "erc721a/contracts/ERC721A.sol";
+import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
+import "./Playable.sol";
+import "@openzeppelin/contracts/utils/Counters.sol";
 
-contract Tree is ERC721A {
-    string private greeting;
+contract Tree is ERC721, Playable {
+    event Planted(address indexed from, uint256 indexed id);
+    using Counters for Counters.Counter;
+    Counters.Counter public _tokenCounter;
 
-    constructor() ERC721A("TamagoTree", "TREE") {
+    constructor() ERC721("TamagoTree", "TREE") {
       console.log("Deploying a Tree with greeting:");
     }
 
-    function mint(uint256 _quantity) external {
+    function plant() external {
         // `_mint`'s second argument now takes in a `quantity`, not a `tokenId`.
-        _mint(msg.sender, _quantity);
+        uint256 current = _tokenCounter.current();
+        _mint(msg.sender, current);
+        _water(current);
+        _tokenCounter.increment();
     }
 
-    function greet() public view returns (string memory) {
-        return greeting;
-    }
-
-    function setGreeting(string memory _greeting) public {
-        console.log("Changing greeting from '%s' to '%s'", greeting, _greeting);
-        greeting = _greeting;
+    function water(uint256 _tokenId) external {
+        _water(_tokenId);
     }
 }
