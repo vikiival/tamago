@@ -5,7 +5,7 @@ import Tree from '@/Tree/Tree'
 const Water: NextPage = () => {
 	return (
 		<CenteredCard>
-			<Tree level={2} lastWatered={5}/>
+			<Tree level={4} lastWatered={5}/>
 		</CenteredCard>
 
 	)
