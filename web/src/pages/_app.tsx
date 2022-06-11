@@ -3,6 +3,7 @@ import { APP_NAME } from '@/lib/consts'
 import '@rainbow-me/rainbowkit/styles.css'
 import { chain, createClient, WagmiConfig } from 'wagmi'
 import { apiProvider, configureChains, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit'
+import Navbar from '@/components/Navbar/Navbar'
 
 const { chains, provider } = configureChains(
 	[chain.optimism],
@@ -16,6 +17,7 @@ const App = ({ Component, pageProps }) => {
 	return (
 		<WagmiConfig client={wagmiClient}>
 			<RainbowKitProvider chains={chains}>
+				<Navbar/>
 				<Component {...pageProps} />
 			</RainbowKitProvider>
 		</WagmiConfig>
