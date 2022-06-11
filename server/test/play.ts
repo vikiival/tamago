@@ -7,6 +7,6 @@ describe("Playable", function () {
     const greeter = await Playable.deploy();
     await greeter.deployed();
 
-    expect(await greeter.isDayAfterWatering(0)).to.equal(false);
+    expect(await greeter.isDayAfterWatering()).to.equal(true);
   });
 });
