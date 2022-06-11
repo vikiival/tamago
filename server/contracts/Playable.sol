@@ -5,6 +5,7 @@ import "./DateTimeUtils.sol";
 import "hardhat/console.sol";
 
 contract Playable {
+    event Watered(uint indexed id, uint256 indexed level, uint indexed wateredAt);
 
     mapping(uint256 => uint256) private _treeLevel; // from tokenId to level
     mapping(uint256 => uint) private _lastWatered; // from tokenId to last watered timestamp
@@ -18,13 +19,14 @@ contract Playable {
     }
 
     function _water(uint256 _tokenId) internal {
-        require(isDayAfterWatering(_tokenId));
+        require(isDayAfterWatering(), "Watering can only be once a day");
         _treeLevel[_tokenId] += 1;
         _lastWatered[_tokenId] = DateTimeUtils.minDate(block.timestamp);
     }
 
-    function isDayAfterWatering(uint256 _tokenId) public view returns (bool) {
-        uint lastWatered = _lastWatered[_tokenId];
-        return DateTimeUtils.isNextDay(lastWatered, block.timestamp);
+    function isDayAfterWatering(/*uint256 _tokenId*/) public pure returns (bool) {
+        // uint lastWatered = _lastWatered[_tokenId];
+        // return DateTimeUtils.isNextDay(lastWatered, block.timestamp);
+        return true; // ONly FOR TESTING
     }
 }
