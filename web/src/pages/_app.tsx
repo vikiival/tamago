@@ -6,7 +6,7 @@ import { apiProvider, configureChains, getDefaultWallets, RainbowKitProvider } f
 import Navbar from '@/components/Navbar/Navbar'
 
 const { chains, provider } = configureChains(
-	[chain.optimism],
+	[chain.localhost, chain.rinkeby],
 	[apiProvider.infura(process.env.NEXT_PUBLIC_INFURA_ID), apiProvider.fallback()]
 )
 
