@@ -4,7 +4,6 @@ import {
   useConnect,
   useContractRead,
   useContractWrite,
-  useWaitForTransaction,
   useAccount
 } from 'wagmi';
 
@@ -19,7 +18,6 @@ const MintButton: FC<any> = () => {
   const {
     write: mint,
     isLoading,
-    isSuccess
   } = useContractWrite(contractConfig, 'plant');
 
   console.log('account.address', account?.address, isConnected)
