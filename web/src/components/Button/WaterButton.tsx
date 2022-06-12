@@ -1,5 +1,5 @@
 import contractConfig from '@/utils/config/contract.config'
-import { FC } from 'react'
+import { FC, useEffect, useState } from 'react'
 import {
   useAccount,
   useConnect,
@@ -8,17 +8,15 @@ import {
   useWaitForTransaction,
 } from 'wagmi';
 
-const WaterButton: FC<any> = ({ id }) => {
+const WaterButton: FC<any> = ({ id, alreadyWatered, level }) => {
   // const [totalMinted, setTotalMinted] = useState(0);
-  const { isConnected } = useConnect();
-  const { data: account } = useAccount();
-  // const [style, setStyle] = useState('bg-green-500 hover:bg-green-700');
-  // const [text, setText] = useState('Mint lovely tree');
+  const [style, setStyle] = useState('bg-blue-500 hover:bg-blue-700');
+  const [text, setText] = useState('Water my tree');
 
   const {
     write: water,
     isLoading,
-  } = useContractWrite(contractConfig, 'water', { args: id });
+  } = useContractWrite(contractConfig, 'water', { args: [id] });
 
   // const {
   //   data: mintData,
@@ -39,14 +37,21 @@ const WaterButton: FC<any> = ({ id }) => {
   // });
 
   const handleClick = () => {
-    console.log('Water ready now just call mint()'); 
-    // console.log('Calling WATER()');
-    // water()
+    console.log('Calling WATER()');
+    water()
   }
 
+  useEffect(() => {
+    if (alreadyWatered) {
+      setStyle('bg-gray-500');
+      setText('Nice job already watered');
+    }
+
+  }, [alreadyWatered])
+
   return (
-    <button disabled={!isConnected} onClick={handleClick} className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full">
-      Water
+    <button disabled={alreadyWatered && false} onClick={handleClick} className={`${style} text-white font-bold py-2 px-4 w-full`}>
+      {text} (id: {id}, level: {level})
     </button>
   )
 }
