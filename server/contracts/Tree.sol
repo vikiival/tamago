@@ -15,7 +15,7 @@ contract Tree is ERC721, Playable {
       console.log("Deploying a Tree with greeting:");
     }
 
-    function plant() external {
+    function plant() external onlyOnePerUser {
         // `_mint`'s second argument now takes in a `quantity`, not a `tokenId`.
         uint256 current = _tokenCounter.current();
         _mint(msg.sender, current);
@@ -25,5 +25,10 @@ contract Tree is ERC721, Playable {
 
     function water(uint256 _tokenId) external {
         _water(_tokenId);
+    }
+
+    modifier onlyOnePerUser() { 
+       require(balanceOf(msg.sender) == 0, "[TREE] Only one plant per user is allowed");
+       _;
     }
 }
