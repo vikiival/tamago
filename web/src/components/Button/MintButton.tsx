@@ -20,20 +20,13 @@ const MintButton: FC<any> = () => {
     isLoading,
   } = useContractWrite(contractConfig, 'plant');
 
-  console.log('account.address', account?.address, isConnected)
-
   const { data: currentBalance } = useContractRead(
     contractConfig,
     'balanceOf',
     { watch: true, args: account?.address, enabled: isConnected }
   );
 
-  console.log('currentBalance', Number(currentBalance))
   const alreadyPlanted = Number(currentBalance)
-
-  // const { isSuccess: txSuccess, error: txError } = useWaitForTransaction({
-  //   hash: mintData?.hash,
-  // });
 
   const handleClick = () => {
     // console.log('Mining ready now just call mint()');
@@ -49,8 +42,6 @@ const MintButton: FC<any> = () => {
     }
 
   }, [alreadyPlanted])
-
-
 
   return (
    <button disabled={!isConnected || isLoading || alreadyPlanted >= 1} onClick={handleClick} className={`${style} text-white font-bold p-4 w-full`}>

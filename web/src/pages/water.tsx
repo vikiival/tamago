@@ -39,8 +39,6 @@ const Water: NextPage = () => {
 	const level = mayLevel?.toNumber()
 	const planted = mayPlanted?.toNumber()
 
-	console.log('stuff', id, level, planted, today, planted === today)
-
 	return (
 		<CenteredCard>
 			<Tree level={level} lastWatered={5}/>
