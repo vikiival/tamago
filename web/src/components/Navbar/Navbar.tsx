@@ -29,16 +29,14 @@ const Navbar: FC = () => {
         </Link>
         <div className="hidden sm:block sm:ml-6">
           <div className="flex space-x-4">
-            <a href="/plant" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Mint</a>
-            <a href="/water" className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Water</a>
-
+            <Link href="/plant">
+              <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Plant</a>
+            </Link>
+            <Link href="/water">
+              <a className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Water</a>
+            </Link>
           </div>
         </div>
-      </div>
-      <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-      <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full">
-      +
-    </button>
       </div>
       <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
         <ConnectWallet />
