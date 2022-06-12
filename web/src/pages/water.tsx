@@ -14,6 +14,14 @@ const Water: NextPage = () => {
     { watch: true, args: account?.address, enabled: isConnected }
   );
 
+	const { data: level } = useContractRead(
+    contractConfig,
+    'getLevel',
+    { watch: true, args: account?.address, enabled: isConnected }
+  );
+
+	console.log('stuff', id, level)
+
 	return (
 		<CenteredCard>
 			<Tree level={4} lastWatered={5}/>
