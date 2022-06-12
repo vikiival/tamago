@@ -19,14 +19,13 @@ contract Playable {
     }
 
     function _water(uint256 _tokenId) internal {
-        require(isDayAfterWatering(), "Watering can only be once a day");
+        require(isDayAfterWatering(_tokenId), "Watering can only be once a day");
         _treeLevel[_tokenId] += 1;
         _lastWatered[_tokenId] = DateTimeUtils.minDate(block.timestamp);
     }
 
-    function isDayAfterWatering(/*uint256 _tokenId*/) public pure returns (bool) {
-        // uint lastWatered = _lastWatered[_tokenId];
-        // return DateTimeUtils.isNextDay(lastWatered, block.timestamp);
-        return true; // ONly FOR TESTING
+    function isDayAfterWatering(uint256 _tokenId) public pure returns (bool) {
+        uint lastWatered = _lastWatered[_tokenId];
+        return DateTimeUtils.isNextDay(lastWatered, block.timestamp);
     }
 }
