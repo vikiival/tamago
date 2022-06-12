@@ -1,11 +1,7 @@
 import contractConfig from '@/utils/config/contract.config'
 import { FC, useEffect, useState } from 'react'
 import {
-  useAccount,
-  useConnect,
-  useContractRead,
   useContractWrite,
-  useWaitForTransaction,
 } from 'wagmi';
 
 const WaterButton: FC<any> = ({ id, alreadyWatered, level }) => {
@@ -15,7 +11,6 @@ const WaterButton: FC<any> = ({ id, alreadyWatered, level }) => {
 
   const {
     write: water,
-    isLoading,
   } = useContractWrite(contractConfig, 'water', { args: [id] });
 
   // const {
