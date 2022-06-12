@@ -45,7 +45,7 @@ const WaterButton: FC<any> = ({ id, alreadyWatered, level }) => {
   }, [alreadyWatered])
 
   return (
-    <button disabled={alreadyWatered && false} onClick={handleClick} className={`${style} text-white font-bold py-2 px-4 w-full`}>
+    <button disabled={alreadyWatered} onClick={handleClick} className={`${style} text-white font-bold py-2 px-4 w-full`}>
       {text} (id: {id}, level: {level})
     </button>
   )
