@@ -16,7 +16,7 @@ const WaterButton: FC<any> = ({ id }) => {
   //   isLoading: isMintLoading,
   //   isSuccess: isMintStarted,
   //   error: mintError,
-  // } = useContractWrite(contractConfig, 'mint', { args: [id] });
+  // } = useContractWrite(contractConfig, 'mint', { args: id });
 
   // const { data: totalSupplyData } = useContractRead(
   //   contractConfig,
