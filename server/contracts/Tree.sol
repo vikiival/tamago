@@ -29,7 +29,7 @@ contract Tree is ERC721, Playable {
         _water(_tokenId);
     }
 
-    function _setOwnerToTree(address _owner, uint256) internal {
+    function _setOwnerToTree(address _owner, uint256 _tokenId) internal {
         _treeOwner[_owner] = _tokenId;
     }
 
