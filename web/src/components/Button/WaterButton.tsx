@@ -1,5 +1,7 @@
+import contractConfig from '@/utils/config/contract.config'
 import { FC } from 'react'
 import {
+  useAccount,
   useConnect,
   useContractRead,
   useContractWrite,
@@ -9,6 +11,14 @@ import {
 const WaterButton: FC<any> = ({ id }) => {
   // const [totalMinted, setTotalMinted] = useState(0);
   const { isConnected } = useConnect();
+  const { data: account } = useAccount();
+  // const [style, setStyle] = useState('bg-green-500 hover:bg-green-700');
+  // const [text, setText] = useState('Mint lovely tree');
+
+  const {
+    write: water,
+    isLoading,
+  } = useContractWrite(contractConfig, 'water', { args: id });
 
   // const {
   //   data: mintData,
@@ -30,6 +40,8 @@ const WaterButton: FC<any> = ({ id }) => {
 
   const handleClick = () => {
     console.log('Water ready now just call mint()'); 
+    // console.log('Calling WATER()');
+    // water()
   }
 
   return (
